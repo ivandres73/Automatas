@@ -19,12 +19,16 @@ namespace Automatas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            File archivo = new File();
+            Console.WriteLine("click pressed");
+            Parser.StrToArray(txtSigma.Text);
         }
 
         private void txtDelta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //SAME AS CLICK
+            if (e.KeyChar == (char)13)
+            {
+                Console.WriteLine("enter pressed");
+            }
         }
     }
 }

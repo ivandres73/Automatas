@@ -44,6 +44,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +53,7 @@
             // Create
             // 
             this.Create.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Create.Location = new System.Drawing.Point(491, 260);
+            this.Create.Location = new System.Drawing.Point(618, 254);
             this.Create.Margin = new System.Windows.Forms.Padding(4);
             this.Create.Name = "Create";
             this.Create.Size = new System.Drawing.Size(115, 48);
@@ -75,6 +77,8 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.txtName);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.txtDelta);
@@ -99,9 +103,10 @@
             // 
             // txtName
             // 
+            this.txtName.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(139, 68);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(189, 23);
+            this.txtName.Size = new System.Drawing.Size(189, 26);
             this.txtName.TabIndex = 2;
             // 
             // label6
@@ -117,38 +122,43 @@
             // 
             // txtDelta
             // 
-            this.txtDelta.Location = new System.Drawing.Point(139, 382);
+            this.txtDelta.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelta.Location = new System.Drawing.Point(139, 380);
             this.txtDelta.Name = "txtDelta";
-            this.txtDelta.Size = new System.Drawing.Size(189, 23);
+            this.txtDelta.Size = new System.Drawing.Size(189, 26);
             this.txtDelta.TabIndex = 7;
             this.txtDelta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDelta_KeyPress);
             // 
             // txtF
             // 
-            this.txtF.Location = new System.Drawing.Point(139, 325);
+            this.txtF.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtF.Location = new System.Drawing.Point(139, 323);
             this.txtF.Name = "txtF";
-            this.txtF.Size = new System.Drawing.Size(189, 23);
+            this.txtF.Size = new System.Drawing.Size(189, 26);
             this.txtF.TabIndex = 6;
             // 
             // txts
             // 
-            this.txts.Location = new System.Drawing.Point(139, 268);
+            this.txts.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txts.Location = new System.Drawing.Point(139, 266);
             this.txts.Name = "txts";
-            this.txts.Size = new System.Drawing.Size(189, 23);
+            this.txts.Size = new System.Drawing.Size(189, 26);
             this.txts.TabIndex = 5;
             // 
             // txtSigma
             // 
-            this.txtSigma.Location = new System.Drawing.Point(139, 211);
+            this.txtSigma.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSigma.Location = new System.Drawing.Point(139, 209);
             this.txtSigma.Name = "txtSigma";
-            this.txtSigma.Size = new System.Drawing.Size(189, 23);
+            this.txtSigma.Size = new System.Drawing.Size(189, 26);
             this.txtSigma.TabIndex = 4;
             // 
             // txtQ
             // 
-            this.txtQ.Location = new System.Drawing.Point(139, 154);
+            this.txtQ.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQ.Location = new System.Drawing.Point(139, 152);
             this.txtQ.Name = "txtQ";
-            this.txtQ.Size = new System.Drawing.Size(189, 23);
+            this.txtQ.Size = new System.Drawing.Size(189, 26);
             this.txtQ.TabIndex = 3;
             // 
             // label5
@@ -217,6 +227,30 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Automata";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label8.Location = new System.Drawing.Point(334, 214);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(166, 20);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "( separated by (,) )";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label9.Location = new System.Drawing.Point(334, 328);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(166, 20);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "( separated by (,) )";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -253,6 +287,8 @@
         private System.Windows.Forms.TextBox txts;
         private System.Windows.Forms.TextBox txtSigma;
         private System.Windows.Forms.TextBox txtQ;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
 
