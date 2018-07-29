@@ -44,5 +44,17 @@ namespace Automatas
             Delta = null;
         }
 
+        public void print()
+        {
+            Console.WriteLine("Name: " + Name);
+            Console.WriteLine("Q: " + Q);
+            for (int i=0; i < Sigma.Length; i++)
+                Console.WriteLine("Sigma[" + i + "]: " + Sigma[i]);
+            Console.WriteLine("s: " + InitState);
+            for (int i=0; i < FState.Length; i++)
+                Console.WriteLine("F[" + i + "]: " + FState[i]);
+            Console.WriteLine("Delta: " + Delta);
+        }
+
     }
 }

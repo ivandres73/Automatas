@@ -19,8 +19,19 @@ namespace Automatas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("click pressed");
-            Parser.StrToArray(txtSigma.Text);
+            int[] arregloF = null;
+            char[] arregloSigma = Parser.StrToCharArray(txtSigma.Text);
+            try
+            {
+                arregloF = Parser.StrToIntArray(txtF.Text);
+            } catch (FormatException ex)
+            {
+                MessageBox.Show("F must not contain other than digits");
+            }
+            Automata automaton = new Automata(
+                txtName.Text, int.Parse(txtQ.Text), arregloSigma, int.Parse(txts.Text), arregloF
+                );
+            automaton.print();
         }
 
         private void txtDelta_KeyPress(object sender, KeyPressEventArgs e)
