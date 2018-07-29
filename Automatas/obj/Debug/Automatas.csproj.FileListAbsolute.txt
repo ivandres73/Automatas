@@ -1,0 +1,10 @@
+C:\Users\ivand\Documents\VisualStudioProyects\Automatas\Automatas\bin\Debug\Automatas.exe.config
+C:\Users\ivand\Documents\VisualStudioProyects\Automatas\Automatas\bin\Debug\Automatas.exe
+C:\Users\ivand\Documents\VisualStudioProyects\Automatas\Automatas\bin\Debug\Automatas.pdb
+C:\Users\ivand\Documents\VisualStudioProyects\Automatas\Automatas\obj\Debug\Automatas.csprojAssemblyReference.cache
+C:\Users\ivand\Documents\VisualStudioProyects\Automatas\Automatas\obj\Debug\Automatas.Properties.Resources.resources
+C:\Users\ivand\Documents\VisualStudioProyects\Automatas\Automatas\obj\Debug\Automatas.csproj.GenerateResource.cache
+C:\Users\ivand\Documents\VisualStudioProyects\Automatas\Automatas\obj\Debug\Automatas.csproj.CoreCompileInputs.cache
+C:\Users\ivand\Documents\VisualStudioProyects\Automatas\Automatas\obj\Debug\Automatas.exe
+C:\Users\ivand\Documents\VisualStudioProyects\Automatas\Automatas\obj\Debug\Automatas.pdb
+C:\Users\ivand\Documents\VisualStudioProyects\Automatas\Automatas\obj\Debug\Automatas.Main.resources
