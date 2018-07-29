@@ -22,9 +22,9 @@ namespace Automatas
             File archivo = new File();
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void txtDelta_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            //SAME AS CLICK
         }
     }
 }
