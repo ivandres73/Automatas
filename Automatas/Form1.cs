@@ -21,15 +21,36 @@ namespace Automatas
         {
             int[] arregloF = null;
             char[] arregloSigma = Parser.StrToCharArray(txtSigma.Text);
+            int numberQ;
+            int numbers;
             try
             {
                 arregloF = Parser.StrToIntArray(txtF.Text);
             } catch (FormatException ex)
             {
                 MessageBox.Show("F must not contain other than digits");
+                return;
+            }
+            try
+            {
+                numberQ = int.Parse(txtQ.Text);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Q must be a number");
+                return;
+            }
+            try
+            {
+                numbers = int.Parse(txts.Text);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("s must be a number");
+                return;
             }
             Automata automaton = new Automata(
-                txtName.Text, int.Parse(txtQ.Text), arregloSigma, int.Parse(txts.Text), arregloF
+                (txtName.Text == "") ? "nameless" : txtName.Text, numberQ, arregloSigma, numbers, arregloF
                 );
             automaton.print();
         }

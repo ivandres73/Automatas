@@ -51,8 +51,11 @@ namespace Automatas
             for (int i=0; i < Sigma.Length; i++)
                 Console.WriteLine("Sigma[" + i + "]: " + Sigma[i]);
             Console.WriteLine("s: " + InitState);
-            for (int i=0; i < FState.Length; i++)
-                Console.WriteLine("F[" + i + "]: " + FState[i]);
+            if (FState != null)
+            {
+                for (int i = 0; i < FState.Length; i++)
+                    Console.WriteLine("F[" + i + "]: " + FState[i]);
+            }
             Console.WriteLine("Delta: " + Delta);
         }
 
