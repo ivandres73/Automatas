@@ -9,8 +9,8 @@ namespace Automatas
 {
     class File
     {
-        private BinaryWriter bw;
-        private BinaryReader br;
+        public BinaryWriter bw;
+        public BinaryReader br;
 
         public File()
         {
@@ -23,7 +23,7 @@ namespace Automatas
                 Console.WriteLine(e.Message + "\n Cannot create file.");
                 return;
             }
-            bw.Close();
+            //bw.Close();
         }
     }
 }

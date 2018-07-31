@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Create = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDelta = new System.Windows.Forms.TextBox();
@@ -44,23 +46,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Create
+            // btnCreate
             // 
-            this.Create.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Create.Location = new System.Drawing.Point(618, 254);
-            this.Create.Margin = new System.Windows.Forms.Padding(4);
-            this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(115, 48);
-            this.Create.TabIndex = 8;
-            this.Create.Text = "Create";
-            this.Create.UseVisualStyleBackColor = true;
-            this.Create.Click += new System.EventHandler(this.button1_Click);
+            this.btnCreate.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.Location = new System.Drawing.Point(618, 254);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(115, 48);
+            this.btnCreate.TabIndex = 8;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabControl1
             // 
@@ -91,7 +91,7 @@
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.Create);
+            this.tabPage1.Controls.Add(this.btnCreate);
             this.tabPage1.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
@@ -100,6 +100,30 @@
             this.tabPage1.Size = new System.Drawing.Size(961, 473);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Create Automaton";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label9.Location = new System.Drawing.Point(334, 328);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(166, 20);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "( separated by (,) )";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label8.Location = new System.Drawing.Point(334, 214);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(166, 20);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "( separated by (,) )";
             // 
             // txtName
             // 
@@ -227,30 +251,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Automata";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label8.Location = new System.Drawing.Point(334, 214);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(166, 20);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "( separated by (,) )";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label9.Location = new System.Drawing.Point(334, 328);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(166, 20);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "( separated by (,) )";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -271,7 +271,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Create;
+        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

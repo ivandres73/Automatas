@@ -53,6 +53,8 @@ namespace Automatas
                 (txtName.Text == "") ? "nameless" : txtName.Text, numberQ, arregloSigma, numbers, arregloF
                 );
             automaton.print();
+            if (automaton.save())
+                Console.WriteLine(automaton.Name + " saved correctly!");
         }
 
         private void txtDelta_KeyPress(object sender, KeyPressEventArgs e)
