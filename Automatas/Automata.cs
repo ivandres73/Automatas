@@ -64,6 +64,7 @@ namespace Automatas
         public bool save()
         {
             archivo = new File();
+            archivo.openbw(2);
             try
             {
                 archivo.bw.Write(Name);
@@ -72,17 +73,17 @@ namespace Automatas
                 archivo.bw.Write(Sigma);
                 archivo.bw.Write(';');
                 archivo.bw.Write(InitState);
+                archivo.bw.Write(FState.Length);
                 for (short i = 0; i < FState.Length; i++)
                 {
                     archivo.bw.Write(FState[i]);
                 }
-                archivo.bw.Write(';');
                 archivo.bw.Write("Delta");
                 archivo.bw.Write('.');//. separa automatas, ; separa atributos de automatas
             }
             catch (IOException e)
             {
-                Console.WriteLine(e.Message + "\n Cannot write to file.");
+                Console.WriteLine(e.Message + "\n Error saving Automaton to file.");
                 return false;
             }
             archivo.cerrar();
@@ -91,7 +92,46 @@ namespace Automatas
 
         public bool load()
         {
-
+            archivo = new File();
+            archivo.openbr(3);
+            try
+            {
+                char n = '\0';
+                string nombre = "";
+                int i;
+                do
+                {
+                    nombre += n;
+                    n = archivo.br.ReadChar();
+                } while (n != ';');
+                Name = nombre;
+                Q = archivo.br.ReadInt32();
+                nombre = "";
+                n = '\0';
+                do
+                {
+                    nombre += n;
+                    n = archivo.br.ReadChar();
+                } while (n != ';');
+                Sigma = Parser.StrToCharArray(nombre);
+                InitState = archivo.br.ReadInt32();
+                i = archivo.br.ReadInt32();
+                FState = new int[i];
+                for (i=0; i < FState.Length; i++)
+                {
+                    FState[i] = archivo.br.ReadInt32();
+                }
+                n = '\0';
+                do
+                {
+                    n = archivo.br.ReadChar();
+                } while (n != '.');
+            } catch (IOException e)
+            {
+                Console.WriteLine(e.Message + "\n error loading automaton from file.");
+            }
+            Console.WriteLine(Name + " loaded correctly !");
+            archivo.cerrar();
             return true;
         }
 

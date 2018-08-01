@@ -15,7 +15,7 @@ namespace Automatas
 
         public File()
         {
-            openbw(2);
+            
         }
 
         public bool openbw(byte b)

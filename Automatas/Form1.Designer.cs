@@ -75,6 +75,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(969, 505);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             // 
             // tabPage1
             // 
@@ -256,6 +257,7 @@
             // 
             // cboAutomata
             // 
+            this.cboAutomata.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAutomata.FormattingEnabled = true;
             this.cboAutomata.Location = new System.Drawing.Point(102, 85);
             this.cboAutomata.Name = "cboAutomata";
@@ -273,6 +275,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

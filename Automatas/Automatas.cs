@@ -9,11 +9,14 @@ namespace Automatas
 {
     class Automatas
     {
-        List<Automata> lista = new List<Automata>();
+        public List<Automata> lista = new List<Automata>();
+        Automata a;
 
         public bool loadList()
         {
-
+            a = new Automata();
+            a.load();
+            lista.Add(a);
             return false;
         }
     }

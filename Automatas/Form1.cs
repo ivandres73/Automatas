@@ -64,5 +64,28 @@ namespace Automatas
                 Console.WriteLine("enter pressed");
             }
         }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            TabPage current = (sender as TabControl).SelectedTab;
+
+            Automatas ams = new Automatas();
+            ams.loadList();
+            cboAutomata.DataSource = ams.lista;
+            cboAutomata.DisplayMember = "Name";
+            cboAutomata.ValueMember = "Name";
+            Console.WriteLine("cargado supuestamente");
+            ams.lista.First<Automata>().print();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            tabControl1.Selecting += new TabControlCancelEventHandler(tabControl1_Selecting);
+        }
     }
 }
