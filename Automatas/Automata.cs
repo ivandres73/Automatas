@@ -85,7 +85,13 @@ namespace Automatas
                 Console.WriteLine(e.Message + "\n Cannot write to file.");
                 return false;
             }
-            archivo.bw.Close();
+            archivo.cerrar();
+            return true;
+        }
+
+        public bool load()
+        {
+
             return true;
         }
 

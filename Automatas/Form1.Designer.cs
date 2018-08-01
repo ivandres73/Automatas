@@ -46,8 +46,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cboAutomata = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCreate
@@ -243,6 +245,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage2.Controls.Add(this.cboAutomata);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
@@ -250,6 +253,14 @@
             this.tabPage2.Size = new System.Drawing.Size(961, 473);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Automata";
+            // 
+            // cboAutomata
+            // 
+            this.cboAutomata.FormattingEnabled = true;
+            this.cboAutomata.Location = new System.Drawing.Point(102, 85);
+            this.cboAutomata.Name = "cboAutomata";
+            this.cboAutomata.Size = new System.Drawing.Size(121, 27);
+            this.cboAutomata.TabIndex = 0;
             // 
             // Main
             // 
@@ -265,6 +276,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -289,6 +301,7 @@
         private System.Windows.Forms.TextBox txtQ;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cboAutomata;
     }
 }
 
