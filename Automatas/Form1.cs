@@ -100,5 +100,36 @@ namespace Automatas
                 }
             }
         }
+
+        private void cboAutomata_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Automata current = null;
+            foreach (Automata a in ams.lista)
+            {
+                if (a.Name == cboAutomata.Text)
+                {
+                    current = a;
+                }
+            }
+
+            DataTable dt = new DataTable();
+
+            var columnSpec = new DataColumn();
+            columnSpec.DataType = typeof(String);  // If it holds a decimal
+            columnSpec.ColumnName = "States";
+            dt.Columns.Add(columnSpec);
+
+            DataRow dr;
+
+            for (byte i = 0; i < current.Q; i++)
+            {
+                dr = dt.NewRow();
+                dr["States"] = "q" + i;
+                dt.Rows.Add(dr);
+            }
+
+
+            dgvDelta.DataSource = dt;
+        }
     }
 }

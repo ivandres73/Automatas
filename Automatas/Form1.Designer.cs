@@ -48,9 +48,11 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cboAutomata = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.dgvDelta = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDelta)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreate
@@ -246,6 +248,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage2.Controls.Add(this.dgvDelta);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.cboAutomata);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
@@ -264,16 +267,26 @@
             this.cboAutomata.Name = "cboAutomata";
             this.cboAutomata.Size = new System.Drawing.Size(121, 27);
             this.cboAutomata.TabIndex = 0;
+            this.cboAutomata.SelectedIndexChanged += new System.EventHandler(this.cboAutomata_SelectedIndexChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(329, 88);
+            this.button1.Location = new System.Drawing.Point(305, 79);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 36);
+            this.button1.Size = new System.Drawing.Size(150, 36);
             this.button1.TabIndex = 1;
             this.button1.Text = "print Automata";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // dgvDelta
+            // 
+            this.dgvDelta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDelta.Location = new System.Drawing.Point(245, 147);
+            this.dgvDelta.Name = "dgvDelta";
+            this.dgvDelta.RowTemplate.Height = 24;
+            this.dgvDelta.Size = new System.Drawing.Size(439, 263);
+            this.dgvDelta.TabIndex = 2;
             // 
             // Main
             // 
@@ -291,6 +304,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDelta)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -317,6 +331,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboAutomata;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dgvDelta;
     }
 }
 
