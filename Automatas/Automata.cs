@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -67,19 +68,19 @@ namespace Automatas
             archivo.openbw(2);
             try
             {
+                archivo.bw.Write((byte)Name.Length);//tamano del nombre
                 archivo.bw.Write(Name);
-                archivo.bw.Write(';');
                 archivo.bw.Write(Q);
+                archivo.bw.Write((byte)Sigma.Length);//tamano del alfabeto
                 archivo.bw.Write(Sigma);
-                archivo.bw.Write(';');
                 archivo.bw.Write(InitState);
-                archivo.bw.Write(FState.Length);
+                archivo.bw.Write((byte)FState.Length);//tamano de los estados finales
                 for (short i = 0; i < FState.Length; i++)
                 {
                     archivo.bw.Write(FState[i]);
                 }
                 archivo.bw.Write("Delta");
-                archivo.bw.Write('.');//. separa automatas, ; separa atributos de automatas
+                archivo.bw.Write('.');//. separador de automatas
             }
             catch (IOException e)
             {
@@ -96,36 +97,31 @@ namespace Automatas
             archivo.openbr(3);
             try
             {
-                char n = '\0';
-                string nombre = "";
-                int i;
-                do
+                Name = "";
+                byte i = archivo.br.ReadByte();
+                for(byte v=0; v <= i; v++)
                 {
-                    nombre += n;
-                    n = archivo.br.ReadChar();
-                } while (n != ';');
-                Name = nombre;
+                    Name += archivo.br.ReadChar();
+                }
                 Q = archivo.br.ReadInt32();
-                nombre = "";
-                n = '\0';
-                do
+                i = archivo.br.ReadByte();
+                string temp = "";
+                for (byte v=0; v < i; v++)
                 {
-                    nombre += n;
-                    n = archivo.br.ReadChar();
-                } while (n != ';');
-                Sigma = Parser.StrToCharArray(nombre);
+                    temp += archivo.br.ReadChar();
+                }
+                Sigma = Parser.StrToCharArray(temp);
                 InitState = archivo.br.ReadInt32();
-                i = archivo.br.ReadInt32();
+                i = archivo.br.ReadByte();
                 FState = new int[i];
                 for (i=0; i < FState.Length; i++)
                 {
                     FState[i] = archivo.br.ReadInt32();
                 }
-                n = '\0';
                 do
                 {
-                    n = archivo.br.ReadChar();
-                } while (n != '.');
+                    //Delta goes here
+                } while (archivo.br.ReadChar() != '.');
             } catch (IOException e)
             {
                 Console.WriteLine(e.Message + "\n error loading automaton from file.");

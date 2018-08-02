@@ -12,6 +12,7 @@ namespace Automatas
 {
     public partial class Main : Form
     {
+        Automatas ams;
         public Main()
         {
             InitializeComponent();
@@ -65,20 +66,17 @@ namespace Automatas
             }
         }
 
-        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
             TabPage current = (sender as TabControl).SelectedTab;
+            cboAutomata.Items.Clear();
 
-            Automatas ams = new Automatas();
             ams.loadList();
-            cboAutomata.DataSource = ams.lista;
-            cboAutomata.DisplayMember = "Name";
-            cboAutomata.ValueMember = "Name";
+            ams.lista.First<Automata>().print();
+            foreach (Automata a in ams.lista)
+            {
+                cboAutomata.Items.Add(a.Name);
+            }
             Console.WriteLine("cargado supuestamente");
             ams.lista.First<Automata>().print();
         }
@@ -86,6 +84,21 @@ namespace Automatas
         private void Main_Load(object sender, EventArgs e)
         {
             tabControl1.Selecting += new TabControlCancelEventHandler(tabControl1_Selecting);
+            ams = new Automatas();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ams.loadList();
+            Console.WriteLine("------------------");
+            foreach(Automata a in ams.lista)
+            {
+                if (a.Name == cboAutomata.Text)
+                {
+                    a.print();
+                    return;
+                }
+            }
         }
     }
 }

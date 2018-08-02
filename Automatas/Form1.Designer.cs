@@ -47,6 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cboAutomata = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -75,7 +76,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(969, 505);
             this.tabControl1.TabIndex = 1;
-            this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             // 
             // tabPage1
             // 
@@ -246,6 +246,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.cboAutomata);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
@@ -263,6 +264,16 @@
             this.cboAutomata.Name = "cboAutomata";
             this.cboAutomata.Size = new System.Drawing.Size(121, 27);
             this.cboAutomata.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(329, 88);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 36);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "print Automata";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Main
             // 
@@ -305,6 +316,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboAutomata;
+        private System.Windows.Forms.Button button1;
     }
 }
 
