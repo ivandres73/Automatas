@@ -115,9 +115,17 @@ namespace Automatas
             DataTable dt = new DataTable();
 
             var columnSpec = new DataColumn();
-            columnSpec.DataType = typeof(String);  // If it holds a decimal
+            columnSpec.DataType = typeof(String);
             columnSpec.ColumnName = "States";
             dt.Columns.Add(columnSpec);
+
+            foreach(char c in current.Sigma)
+            {
+                var ColumnEntry = new DataColumn();
+                ColumnEntry.DataType = typeof(char);
+                ColumnEntry.ColumnName = c.ToString();
+                dt.Columns.Add(ColumnEntry);
+            }
 
             DataRow dr;
 
