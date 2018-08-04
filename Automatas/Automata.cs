@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Automatas
 {
@@ -129,6 +130,36 @@ namespace Automatas
             Console.WriteLine(Name + " loaded correctly !");
             archivo.cerrar();
             return true;
+        }
+
+        public DataTable getTableFromDelta()
+        {
+            DataTable dt = new DataTable();
+
+            var columnSpec = new DataColumn();
+            columnSpec.DataType = typeof(String);
+            columnSpec.ColumnName = "States";
+            columnSpec.ReadOnly = true;
+            dt.Columns.Add(columnSpec);
+
+            foreach (char c in Sigma)
+            {
+                var ColumnEntry = new DataColumn();
+                ColumnEntry.DataType = typeof(int);
+                ColumnEntry.ColumnName = c.ToString();
+                dt.Columns.Add(ColumnEntry);
+            }
+
+            DataRow dr;
+
+            for (byte i = 0; i < Q; i++)
+            {
+                dr = dt.NewRow();
+                dr["States"] = "q" + i;
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
         }
 
     }

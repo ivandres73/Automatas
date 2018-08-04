@@ -112,32 +112,14 @@ namespace Automatas
                 }
             }
 
-            DataTable dt = new DataTable();
+            dgvDelta.DataSource = current.getTableFromDelta();
+        }
 
-            var columnSpec = new DataColumn();
-            columnSpec.DataType = typeof(String);
-            columnSpec.ColumnName = "States";
-            dt.Columns.Add(columnSpec);
-
-            foreach(char c in current.Sigma)
-            {
-                var ColumnEntry = new DataColumn();
-                ColumnEntry.DataType = typeof(char);
-                ColumnEntry.ColumnName = c.ToString();
-                dt.Columns.Add(ColumnEntry);
-            }
-
-            DataRow dr;
-
-            for (byte i = 0; i < current.Q; i++)
-            {
-                dr = dt.NewRow();
-                dr["States"] = "q" + i;
-                dt.Rows.Add(dr);
-            }
-
-
-            dgvDelta.DataSource = dt;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataTable dt = (DataTable)dgvDelta.DataSource;
+            Console.WriteLine(dt.Rows[0].ItemArray[0]);
+            Console.WriteLine(dt.Rows[1].ItemArray[0]);
         }
     }
 }

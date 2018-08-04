@@ -46,9 +46,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cboAutomata = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.dgvDelta = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cboAutomata = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -248,6 +249,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.dgvDelta);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.cboAutomata);
@@ -259,15 +261,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Automata";
             // 
-            // cboAutomata
+            // dgvDelta
             // 
-            this.cboAutomata.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAutomata.FormattingEnabled = true;
-            this.cboAutomata.Location = new System.Drawing.Point(102, 85);
-            this.cboAutomata.Name = "cboAutomata";
-            this.cboAutomata.Size = new System.Drawing.Size(121, 27);
-            this.cboAutomata.TabIndex = 0;
-            this.cboAutomata.SelectedIndexChanged += new System.EventHandler(this.cboAutomata_SelectedIndexChanged);
+            this.dgvDelta.AllowUserToAddRows = false;
+            this.dgvDelta.AllowUserToDeleteRows = false;
+            this.dgvDelta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDelta.Location = new System.Drawing.Point(245, 147);
+            this.dgvDelta.Name = "dgvDelta";
+            this.dgvDelta.RowTemplate.Height = 24;
+            this.dgvDelta.Size = new System.Drawing.Size(439, 263);
+            this.dgvDelta.TabIndex = 2;
             // 
             // button1
             // 
@@ -279,14 +282,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // dgvDelta
+            // cboAutomata
             // 
-            this.dgvDelta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDelta.Location = new System.Drawing.Point(245, 147);
-            this.dgvDelta.Name = "dgvDelta";
-            this.dgvDelta.RowTemplate.Height = 24;
-            this.dgvDelta.Size = new System.Drawing.Size(439, 263);
-            this.dgvDelta.TabIndex = 2;
+            this.cboAutomata.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAutomata.FormattingEnabled = true;
+            this.cboAutomata.Location = new System.Drawing.Point(102, 85);
+            this.cboAutomata.Name = "cboAutomata";
+            this.cboAutomata.Size = new System.Drawing.Size(121, 27);
+            this.cboAutomata.TabIndex = 0;
+            this.cboAutomata.SelectedIndexChanged += new System.EventHandler(this.cboAutomata_SelectedIndexChanged);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(727, 209);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 45);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Print Datatable";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Main
             // 
@@ -332,6 +346,7 @@
         private System.Windows.Forms.ComboBox cboAutomata;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvDelta;
+        private System.Windows.Forms.Button button2;
     }
 }
 
