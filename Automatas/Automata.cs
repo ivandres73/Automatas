@@ -16,10 +16,10 @@ namespace Automatas
         public char[] Sigma { get; set; }
         public int InitState { get; set; }
         public int[] FState { get; set; }
-        public int[][] Delta { get; set; }
+        public int[,] Delta { get; set; }
         private File archivo;
 
-        public Automata(String name, int q, char[] sigma, int initState, int[] fState, int[][] delta)
+        public Automata(String name, int q, char[] sigma, int initState, int[] fState, int[,] delta)
         {
             Name = name;
             Q = q;
@@ -36,6 +36,9 @@ namespace Automatas
             Sigma = sigma;
             InitState = initState;
             FState = fState;
+            Delta = new int[Q, Sigma.Length + 1];
+            for (int i = 0; i < Q; i++)
+                Delta[i, 0] = i;
         }
 
         public Automata()
@@ -50,17 +53,32 @@ namespace Automatas
 
         public void print()
         {
+
             Console.WriteLine("Name: " + Name);
             Console.WriteLine("Q: " + Q);
+            Console.Write("Sigma: { ");
             for (int i=0; i < Sigma.Length; i++)
-                Console.WriteLine("Sigma[" + i + "]: " + Sigma[i]);
+                Console.Write((i == Sigma.Length-1) ? Sigma[i]+"" : Sigma[i]+", ");
+            Console.WriteLine(" }");
             Console.WriteLine("s: " + InitState);
             if (FState != null)
             {
                 for (int i = 0; i < FState.Length; i++)
                     Console.WriteLine("F[" + i + "]: " + FState[i]);
             }
-            Console.WriteLine("Delta: " + Delta);
+
+            if (Delta != null)
+            {
+                for (int i = 0; i < Delta.GetLength(0); i++)
+                {
+                    Console.Write("q" + Delta[i, 0] + "->");
+                    for (int v = 1; v < Delta.GetLength(1); v++)
+                    {
+                        Console.Write(" " + Sigma[v - 1] + ":" + Delta[i, v]);
+                    }
+                    Console.Write('\n');
+                }
+            }
         }
 
         public bool save()
@@ -80,7 +98,15 @@ namespace Automatas
                 {
                     archivo.bw.Write(FState[i]);
                 }
-                archivo.bw.Write("Delta");
+                archivo.bw.Write((byte)Delta.GetLength(0));
+                archivo.bw.Write((byte)Delta.GetLength(1));
+                for (short i=0; i < Delta.GetLength(0); i++)
+                {
+                    for (short v=0; v < Delta.GetLength(1); v++)
+                    {
+                        archivo.bw.Write(Delta[i, v]);
+                    }
+                }
                 archivo.bw.Write('.');//. separador de automatas
             }
             catch (IOException e)
@@ -160,6 +186,24 @@ namespace Automatas
             }
 
             return dt;
+        }
+
+        public void setDeltaFromTable(DataTable dt)
+        {
+            Delta = new int[Q, Sigma.Length+1];
+            for (int i = 0; i < Q; i++)
+                Delta[i, 0] = i;
+
+            for (int i=0; i < Q; i++)
+            {
+                for (int v=1; v <= Sigma.Length; v++)
+                {
+                    if (dt.Rows[i].ItemArray[v].ToString() == "")
+                        continue;
+                    else
+                        Delta[i, v] = int.Parse(dt.Rows[i].ItemArray[v].ToString());
+                }
+            }
         }
 
     }

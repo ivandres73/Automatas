@@ -12,7 +12,10 @@ namespace Automatas
 {
     public partial class Main : Form
     {
+        int conta=0;
         Automatas ams;
+        Automata current;
+
         public Main()
         {
             InitializeComponent();
@@ -103,23 +106,22 @@ namespace Automatas
 
         private void cboAutomata_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Automata current = null;
             foreach (Automata a in ams.lista)
             {
                 if (a.Name == cboAutomata.Text)
                 {
                     current = a;
+                    break;
                 }
             }
 
             dgvDelta.DataSource = current.getTableFromDelta();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void dgvDelta_CurrentCellChanged(object sender, EventArgs e)
         {
             DataTable dt = (DataTable)dgvDelta.DataSource;
-            Console.WriteLine(dt.Rows[0].ItemArray[0]);
-            Console.WriteLine(dt.Rows[1].ItemArray[0]);
+            current.setDeltaFromTable(dt);   
         }
     }
 }
