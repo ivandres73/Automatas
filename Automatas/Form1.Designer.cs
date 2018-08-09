@@ -35,19 +35,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtDelta = new System.Windows.Forms.TextBox();
             this.txtF = new System.Windows.Forms.TextBox();
             this.txts = new System.Windows.Forms.TextBox();
             this.txtSigma = new System.Windows.Forms.TextBox();
             this.txtQ = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvDelta = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSaveDelta = new System.Windows.Forms.Button();
             this.cboAutomata = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -86,12 +84,10 @@
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.txtName);
             this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.txtDelta);
             this.tabPage1.Controls.Add(this.txtF);
             this.tabPage1.Controls.Add(this.txts);
             this.tabPage1.Controls.Add(this.txtSigma);
             this.tabPage1.Controls.Add(this.txtQ);
-            this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
@@ -149,15 +145,6 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Name:";
             // 
-            // txtDelta
-            // 
-            this.txtDelta.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDelta.Location = new System.Drawing.Point(139, 380);
-            this.txtDelta.Name = "txtDelta";
-            this.txtDelta.Size = new System.Drawing.Size(189, 26);
-            this.txtDelta.TabIndex = 7;
-            this.txtDelta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDelta_KeyPress);
-            // 
             // txtF
             // 
             this.txtF.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -189,17 +176,6 @@
             this.txtQ.Name = "txtQ";
             this.txtQ.Size = new System.Drawing.Size(189, 26);
             this.txtQ.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Montserrat", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(82, 376);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 29);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "δ:";
             // 
             // label4
             // 
@@ -249,7 +225,7 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DimGray;
             this.tabPage2.Controls.Add(this.dgvDelta);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.btnSaveDelta);
             this.tabPage2.Controls.Add(this.cboAutomata);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
@@ -271,15 +247,15 @@
             this.dgvDelta.TabIndex = 2;
             this.dgvDelta.CurrentCellChanged += new System.EventHandler(this.dgvDelta_CurrentCellChanged);
             // 
-            // button1
+            // btnSaveDelta
             // 
-            this.button1.Location = new System.Drawing.Point(305, 79);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 36);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "print Automata";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnSaveDelta.Location = new System.Drawing.Point(305, 79);
+            this.btnSaveDelta.Name = "btnSaveDelta";
+            this.btnSaveDelta.Size = new System.Drawing.Size(150, 36);
+            this.btnSaveDelta.TabIndex = 1;
+            this.btnSaveDelta.Text = "Save";
+            this.btnSaveDelta.UseVisualStyleBackColor = true;
+            this.btnSaveDelta.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // cboAutomata
             // 
@@ -319,13 +295,11 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtDelta;
         private System.Windows.Forms.TextBox txtF;
         private System.Windows.Forms.TextBox txts;
         private System.Windows.Forms.TextBox txtSigma;
@@ -333,7 +307,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboAutomata;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSaveDelta;
         private System.Windows.Forms.DataGridView dgvDelta;
     }
 }

@@ -87,7 +87,6 @@ namespace Automatas
             archivo.openbw(2);
             try
             {
-                archivo.bw.Write((byte)Name.Length);//tamano del nombre
                 archivo.bw.Write(Name);
                 archivo.bw.Write(Q);
                 archivo.bw.Write((byte)Sigma.Length);//tamano del alfabeto
@@ -107,7 +106,8 @@ namespace Automatas
                         archivo.bw.Write(Delta[i, v]);
                     }
                 }
-                archivo.bw.Write('.');//. separador de automatas
+                //char punto = '.';
+                //archivo.bw.Write(punto);//. separador de automatas
             }
             catch (IOException e)
             {
@@ -124,12 +124,8 @@ namespace Automatas
             archivo.openbr(3);
             try
             {
-                Name = "";
-                byte i = archivo.br.ReadByte();
-                for(byte v=0; v <= i; v++)
-                {
-                    Name += archivo.br.ReadChar();
-                }
+                byte i;
+                Name = archivo.br.ReadString();
                 Q = archivo.br.ReadInt32();
                 i = archivo.br.ReadByte();
                 string temp = "";
@@ -145,10 +141,18 @@ namespace Automatas
                 {
                     FState[i] = archivo.br.ReadInt32();
                 }
-                do
+                byte row = archivo.br.ReadByte();
+                byte col = archivo.br.ReadByte();
+                Delta = new int[row, col];
+                for (i = 0; i < Delta.GetLength(0); i++)
                 {
-                    //Delta goes here
-                } while (archivo.br.ReadChar() != '.');
+                    for (short v = 0; v < Delta.GetLength(1); v++)
+                    {
+                        Delta[i, v] = archivo.br.ReadInt32();
+                    }
+                }
+                //archivo.br.ReadChar();//leer el . qe separa automatas
+
             } catch (IOException e)
             {
                 Console.WriteLine(e.Message + "\n error loading automaton from file.");
@@ -182,6 +186,10 @@ namespace Automatas
             {
                 dr = dt.NewRow();
                 dr["States"] = "q" + i;
+                for (byte v = 1; v < Delta.GetLength(1); v++)
+                {
+                    dr.SetField(v, Delta[i, v]);
+                }
                 dt.Rows.Add(dr);
             }
 
@@ -204,6 +212,23 @@ namespace Automatas
                         Delta[i, v] = int.Parse(dt.Rows[i].ItemArray[v].ToString());
                 }
             }
+        }
+
+        public bool saveDelta()
+        {
+            archivo = new File();
+            archivo.openbw(3);
+            int i = (1 + Name.Length + 4 + 1 + Sigma.Length + 4 + 1 + (FState.Length*4) + 2);
+            archivo.bw.Seek(i, SeekOrigin.Begin);
+            for (i = 0; i < Delta.GetLength(0); i++)
+            {
+                for (short v = 0; v < Delta.GetLength(1); v++)
+                {
+                    archivo.bw.Write(Delta[i, v]);
+                }
+            }
+            archivo.cerrar();
+            return true;
         }
 
     }

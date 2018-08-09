@@ -12,7 +12,6 @@ namespace Automatas
 {
     public partial class Main : Form
     {
-        int conta=0;
         Automatas ams;
         Automata current;
 
@@ -92,15 +91,15 @@ namespace Automatas
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            ams.loadList();
-            Console.WriteLine("------------------");
-            foreach(Automata a in ams.lista)
+            try
             {
-                if (a.Name == cboAutomata.Text)
-                {
-                    a.print();
-                    return;
-                }
+                Console.WriteLine("------------------");
+                current.print();
+                if (current.saveDelta())
+                    MessageBox.Show("Delta Transitions saved !");
+            } catch (NullReferenceException nre)
+            {
+                MessageBox.Show("Choose an automaton");
             }
         }
 
@@ -116,6 +115,11 @@ namespace Automatas
             }
 
             dgvDelta.DataSource = current.getTableFromDelta();
+
+            foreach (DataGridViewColumn c in dgvDelta.Columns)
+            {
+                c.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         private void dgvDelta_CurrentCellChanged(object sender, EventArgs e)
