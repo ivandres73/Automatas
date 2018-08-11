@@ -47,6 +47,7 @@
             this.dgvDelta = new System.Windows.Forms.DataGridView();
             this.btnSaveDelta = new System.Windows.Forms.Button();
             this.cboAutomata = new System.Windows.Forms.ComboBox();
+            this.tabInput = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -69,6 +70,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabInput);
             this.tabControl1.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(16, 15);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
@@ -267,6 +269,16 @@
             this.cboAutomata.TabIndex = 0;
             this.cboAutomata.SelectedIndexChanged += new System.EventHandler(this.cboAutomata_SelectedIndexChanged);
             // 
+            // tabInput
+            // 
+            this.tabInput.BackColor = System.Drawing.Color.DimGray;
+            this.tabInput.Location = new System.Drawing.Point(4, 28);
+            this.tabInput.Name = "tabInput";
+            this.tabInput.Padding = new System.Windows.Forms.Padding(3);
+            this.tabInput.Size = new System.Drawing.Size(961, 473);
+            this.tabInput.TabIndex = 2;
+            this.tabInput.Text = "Ingresar Palabra";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -309,6 +321,7 @@
         private System.Windows.Forms.ComboBox cboAutomata;
         private System.Windows.Forms.Button btnSaveDelta;
         private System.Windows.Forms.DataGridView dgvDelta;
+        private System.Windows.Forms.TabPage tabInput;
     }
 }
 
