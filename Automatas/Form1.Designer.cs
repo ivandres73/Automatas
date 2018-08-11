@@ -51,6 +51,8 @@
             this.cboAutomaton = new System.Windows.Forms.ComboBox();
             this.txtWord = new System.Windows.Forms.TextBox();
             this.btnPrintDiagram = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.acceptedWords = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -277,6 +279,8 @@
             // tabInput
             // 
             this.tabInput.BackColor = System.Drawing.Color.DimGray;
+            this.tabInput.Controls.Add(this.acceptedWords);
+            this.tabInput.Controls.Add(this.label5);
             this.tabInput.Controls.Add(this.btnPrintDiagram);
             this.tabInput.Controls.Add(this.txtWord);
             this.tabInput.Controls.Add(this.cboAutomaton);
@@ -304,6 +308,7 @@
             this.txtWord.Name = "txtWord";
             this.txtWord.Size = new System.Drawing.Size(165, 26);
             this.txtWord.TabIndex = 2;
+            this.txtWord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWord_KeyPress);
             // 
             // btnPrintDiagram
             // 
@@ -314,6 +319,27 @@
             this.btnPrintDiagram.Text = "Print Diagram";
             this.btnPrintDiagram.UseVisualStyleBackColor = true;
             this.btnPrintDiagram.Click += new System.EventHandler(this.btnPrintDiagram_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label5.Location = new System.Drawing.Point(341, 183);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(153, 20);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Accepted Words";
+            // 
+            // acceptedWords
+            // 
+            this.acceptedWords.Location = new System.Drawing.Point(314, 222);
+            this.acceptedWords.Name = "acceptedWords";
+            this.acceptedWords.ReadOnly = true;
+            this.acceptedWords.Size = new System.Drawing.Size(227, 202);
+            this.acceptedWords.TabIndex = 16;
+            this.acceptedWords.Text = "";
             // 
             // Main
             // 
@@ -363,6 +389,8 @@
         private System.Windows.Forms.ComboBox cboAutomaton;
         private System.Windows.Forms.Button btnPrintDiagram;
         private System.Windows.Forms.TextBox txtWord;
+        private System.Windows.Forms.RichTextBox acceptedWords;
+        private System.Windows.Forms.Label label5;
     }
 }
 

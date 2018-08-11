@@ -54,5 +54,37 @@ namespace Automatas
                 s.printAristas();
             }
         }
+
+        public bool evualateWord(String s, char[] sigma)
+        {
+            bool flag = false;
+            State last = nuevos.First<State>();
+            foreach(char c in s)
+            {
+                for (byte i=0; i < sigma.Length; i++)
+                {
+                    if (c == sigma[i])
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == false)
+                {
+                    Console.WriteLine("word is not part of language cause of: " + c);
+                    return false;
+                }
+                foreach(arista a in last.aristas)
+                {
+                    if (a.entrada == c)
+                    {
+                        last = a.nextState;
+                        Console.WriteLine("con " + c + " me movi a q" + last.num);
+                        break;
+                    }
+                }
+            }
+            return last.isFinal;
+        }
     }
 }

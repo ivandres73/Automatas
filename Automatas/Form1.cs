@@ -81,8 +81,6 @@ namespace Automatas
                 cboAutomata.Items.Add(a.Name);
                 cboAutomaton.Items.Add(a.Name);
             }
-            Console.WriteLine("cargado supuestamente");
-            ams.lista.First<Automata>().print();
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -134,24 +132,65 @@ namespace Automatas
 
         private void btnPrintDiagram_Click(object sender, EventArgs e)
         {
-            sd = new StatesDiagram();
             if (current == null)
             {
                 MessageBox.Show("Seleccione un diagrama...");
                 return;
             }
-            sd.createStates(current);
             sd.printDiagram();
+            if (sd.evualateWord(txtWord.Text, current.Sigma))
+            {
+                if (!string.IsNullOrWhiteSpace(acceptedWords.Text))
+                {
+                    acceptedWords.AppendText("\r\n" + txtWord.Text);
+                }
+                else
+                {
+                    acceptedWords.AppendText(txtWord.Text);
+                }
+                acceptedWords.ScrollToCaret();
+                txtWord.Text = "";
+            }
+            else
+                MessageBox.Show("Word is not accepted");
         }
 
         private void cboAutomaton_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (Automata a in ams.lista)
             {
-                if (a.Name == cboAutomata.Text)
+                if (a.Name == cboAutomaton.Text)
                 {
                     current = a;
                     break;
+                }
+            }
+            sd = new StatesDiagram();
+            sd.createStates(current);
+        }
+
+        private void txtWord_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (current == null)
+                {
+                    MessageBox.Show("Seleccione un diagrama...");
+                    return;
+                }
+                else
+                {
+                    if (sd.evualateWord(txtWord.Text, current.Sigma))
+                    {
+                        if (!string.IsNullOrWhiteSpace(acceptedWords.Text))
+                            acceptedWords.AppendText("\r\n" + txtWord.Text);
+                        else
+                            acceptedWords.AppendText(txtWord.Text);
+                        acceptedWords.ScrollToCaret();
+                        txtWord.Text = "";
+                    }
+                    else
+                        MessageBox.Show("Word is not accepted");
                 }
             }
         }
