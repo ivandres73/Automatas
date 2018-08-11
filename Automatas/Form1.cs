@@ -14,6 +14,7 @@ namespace Automatas
     {
         Automatas ams;
         Automata current;
+        StatesDiagram sd;
 
         public Main()
         {
@@ -72,12 +73,13 @@ namespace Automatas
         {
             TabPage current = (sender as TabControl).SelectedTab;
             cboAutomata.Items.Clear();
+            cboAutomaton.Items.Clear();
 
-            ams.loadList();
-            ams.lista.First<Automata>().print();
+
             foreach (Automata a in ams.lista)
             {
                 cboAutomata.Items.Add(a.Name);
+                cboAutomaton.Items.Add(a.Name);
             }
             Console.WriteLine("cargado supuestamente");
             ams.lista.First<Automata>().print();
@@ -87,6 +89,8 @@ namespace Automatas
         {
             tabControl1.Selecting += new TabControlCancelEventHandler(tabControl1_Selecting);
             ams = new Automatas();
+            ams.loadList();
+            ams.lista.First<Automata>().print();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -126,6 +130,30 @@ namespace Automatas
         {
             DataTable dt = (DataTable)dgvDelta.DataSource;
             current.setDeltaFromTable(dt);   
+        }
+
+        private void btnPrintDiagram_Click(object sender, EventArgs e)
+        {
+            sd = new StatesDiagram();
+            if (current == null)
+            {
+                MessageBox.Show("Seleccione un diagrama...");
+                return;
+            }
+            sd.createStates(current);
+            sd.printDiagram();
+        }
+
+        private void cboAutomaton_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Automata a in ams.lista)
+            {
+                if (a.Name == cboAutomata.Text)
+                {
+                    current = a;
+                    break;
+                }
+            }
         }
     }
 }

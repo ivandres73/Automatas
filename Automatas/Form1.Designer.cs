@@ -48,10 +48,14 @@
             this.btnSaveDelta = new System.Windows.Forms.Button();
             this.cboAutomata = new System.Windows.Forms.ComboBox();
             this.tabInput = new System.Windows.Forms.TabPage();
+            this.cboAutomaton = new System.Windows.Forms.ComboBox();
+            this.txtWord = new System.Windows.Forms.TextBox();
+            this.btnPrintDiagram = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDelta)).BeginInit();
+            this.tabInput.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCreate
@@ -262,22 +266,54 @@
             // cboAutomata
             // 
             this.cboAutomata.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAutomata.DropDownWidth = 140;
             this.cboAutomata.FormattingEnabled = true;
             this.cboAutomata.Location = new System.Drawing.Point(102, 85);
             this.cboAutomata.Name = "cboAutomata";
-            this.cboAutomata.Size = new System.Drawing.Size(121, 27);
+            this.cboAutomata.Size = new System.Drawing.Size(140, 27);
             this.cboAutomata.TabIndex = 0;
             this.cboAutomata.SelectedIndexChanged += new System.EventHandler(this.cboAutomata_SelectedIndexChanged);
             // 
             // tabInput
             // 
             this.tabInput.BackColor = System.Drawing.Color.DimGray;
+            this.tabInput.Controls.Add(this.btnPrintDiagram);
+            this.tabInput.Controls.Add(this.txtWord);
+            this.tabInput.Controls.Add(this.cboAutomaton);
             this.tabInput.Location = new System.Drawing.Point(4, 28);
             this.tabInput.Name = "tabInput";
             this.tabInput.Padding = new System.Windows.Forms.Padding(3);
             this.tabInput.Size = new System.Drawing.Size(961, 473);
             this.tabInput.TabIndex = 2;
             this.tabInput.Text = "Ingresar Palabra";
+            // 
+            // cboAutomaton
+            // 
+            this.cboAutomaton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAutomaton.DropDownWidth = 140;
+            this.cboAutomaton.FormattingEnabled = true;
+            this.cboAutomaton.Location = new System.Drawing.Point(102, 85);
+            this.cboAutomaton.Name = "cboAutomaton";
+            this.cboAutomaton.Size = new System.Drawing.Size(140, 27);
+            this.cboAutomaton.TabIndex = 1;
+            this.cboAutomaton.SelectedIndexChanged += new System.EventHandler(this.cboAutomaton_SelectedIndexChanged);
+            // 
+            // txtWord
+            // 
+            this.txtWord.Location = new System.Drawing.Point(345, 85);
+            this.txtWord.Name = "txtWord";
+            this.txtWord.Size = new System.Drawing.Size(165, 26);
+            this.txtWord.TabIndex = 2;
+            // 
+            // btnPrintDiagram
+            // 
+            this.btnPrintDiagram.Location = new System.Drawing.Point(623, 89);
+            this.btnPrintDiagram.Name = "btnPrintDiagram";
+            this.btnPrintDiagram.Size = new System.Drawing.Size(150, 36);
+            this.btnPrintDiagram.TabIndex = 3;
+            this.btnPrintDiagram.Text = "Print Diagram";
+            this.btnPrintDiagram.UseVisualStyleBackColor = true;
+            this.btnPrintDiagram.Click += new System.EventHandler(this.btnPrintDiagram_Click);
             // 
             // Main
             // 
@@ -296,6 +332,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDelta)).EndInit();
+            this.tabInput.ResumeLayout(false);
+            this.tabInput.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -322,6 +360,9 @@
         private System.Windows.Forms.Button btnSaveDelta;
         private System.Windows.Forms.DataGridView dgvDelta;
         private System.Windows.Forms.TabPage tabInput;
+        private System.Windows.Forms.ComboBox cboAutomaton;
+        private System.Windows.Forms.Button btnPrintDiagram;
+        private System.Windows.Forms.TextBox txtWord;
     }
 }
 

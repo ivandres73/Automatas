@@ -45,7 +45,7 @@ namespace Automatas
 
         public void printAristas()
         {
-            Console.WriteLine("Las aristas de q" + num + "son:");
+            Console.WriteLine("Las aristas de q" + num + " son:");
             foreach(arista a in aristas)
             {
                 Console.WriteLine(a.entrada + "-> q" + a.nextState.num);
