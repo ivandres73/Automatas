@@ -153,6 +153,9 @@ namespace Automatas
             }
             else
                 MessageBox.Show("Word is not accepted");
+            Console.WriteLine("despues de transformarlo------");
+            sd.tranformForElimination(current.FState);
+            //sd.printDiagram();
         }
 
         private void cboAutomaton_SelectedIndexChanged(object sender, EventArgs e)

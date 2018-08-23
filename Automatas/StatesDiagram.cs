@@ -59,9 +59,9 @@ namespace Automatas
         {
             bool flag = false;
             State last = nuevos.First<State>();
-            foreach(char c in s)
+            foreach (char c in s)
             {
-                for (byte i=0; i < sigma.Length; i++)
+                for (byte i = 0; i < sigma.Length; i++)
                 {
                     if (c == sigma[i])
                     {
@@ -74,7 +74,7 @@ namespace Automatas
                     Console.WriteLine("word is not part of language cause of: " + c);
                     return false;
                 }
-                foreach(arista a in last.aristas)
+                foreach (arista a in last.aristas)
                 {
                     if (a.entrada == c)
                     {
@@ -85,6 +85,43 @@ namespace Automatas
                 }
             }
             return last.isFinal;
+        }
+
+        public void tranformForElimination(int[] fs)
+        {
+            State inicial = nuevos.First<State>();
+            State nuevo_final = null;
+            bool salirSiEntrada = false;
+            foreach (State s in nuevos)
+            {
+                foreach (arista a in s.aristas)
+                {
+                    if (a.nextState.num == inicial.num)
+                    {
+                        State nuevoInicial = new State(-1, false);
+                        nuevoInicial.addEntrada('\0', inicial);
+                        nuevos.Insert(0, nuevoInicial);
+                        salirSiEntrada = true;
+                        break;
+                    }
+                }
+                if (salirSiEntrada)
+                    break;
+            }
+            for (byte i=0; i < nuevos.Count; i++)
+            {
+                if (nuevos[i].isFinal && nuevos[i] != nuevo_final)
+                {
+                    if (nuevo_final == null)
+                    {
+                        nuevo_final = new State(-2, true);
+                        nuevos.Add(nuevo_final);
+                    }
+                    nuevos[i].addEntrada('\0', nuevo_final);
+                    nuevos[i].isFinal = false;
+                }
+            }
+            printDiagram();
         }
     }
 }
