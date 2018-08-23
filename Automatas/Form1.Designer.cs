@@ -48,11 +48,13 @@
             this.btnSaveDelta = new System.Windows.Forms.Button();
             this.cboAutomata = new System.Windows.Forms.ComboBox();
             this.tabInput = new System.Windows.Forms.TabPage();
-            this.cboAutomaton = new System.Windows.Forms.ComboBox();
-            this.txtWord = new System.Windows.Forms.TextBox();
-            this.btnPrintDiagram = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.acceptedWords = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnPrintDiagram = new System.Windows.Forms.Button();
+            this.txtWord = new System.Windows.Forms.TextBox();
+            this.cboAutomaton = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtRE = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -279,6 +281,8 @@
             // tabInput
             // 
             this.tabInput.BackColor = System.Drawing.Color.DimGray;
+            this.tabInput.Controls.Add(this.txtRE);
+            this.tabInput.Controls.Add(this.label7);
             this.tabInput.Controls.Add(this.acceptedWords);
             this.tabInput.Controls.Add(this.label5);
             this.tabInput.Controls.Add(this.btnPrintDiagram);
@@ -291,34 +295,14 @@
             this.tabInput.TabIndex = 2;
             this.tabInput.Text = "Ingresar Palabra";
             // 
-            // cboAutomaton
+            // acceptedWords
             // 
-            this.cboAutomaton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAutomaton.DropDownWidth = 140;
-            this.cboAutomaton.FormattingEnabled = true;
-            this.cboAutomaton.Location = new System.Drawing.Point(102, 85);
-            this.cboAutomaton.Name = "cboAutomaton";
-            this.cboAutomaton.Size = new System.Drawing.Size(140, 27);
-            this.cboAutomaton.TabIndex = 1;
-            this.cboAutomaton.SelectedIndexChanged += new System.EventHandler(this.cboAutomaton_SelectedIndexChanged);
-            // 
-            // txtWord
-            // 
-            this.txtWord.Location = new System.Drawing.Point(345, 85);
-            this.txtWord.Name = "txtWord";
-            this.txtWord.Size = new System.Drawing.Size(165, 26);
-            this.txtWord.TabIndex = 2;
-            this.txtWord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWord_KeyPress);
-            // 
-            // btnPrintDiagram
-            // 
-            this.btnPrintDiagram.Location = new System.Drawing.Point(623, 89);
-            this.btnPrintDiagram.Name = "btnPrintDiagram";
-            this.btnPrintDiagram.Size = new System.Drawing.Size(150, 36);
-            this.btnPrintDiagram.TabIndex = 3;
-            this.btnPrintDiagram.Text = "Print Diagram";
-            this.btnPrintDiagram.UseVisualStyleBackColor = true;
-            this.btnPrintDiagram.Click += new System.EventHandler(this.btnPrintDiagram_Click);
+            this.acceptedWords.Location = new System.Drawing.Point(312, 188);
+            this.acceptedWords.Name = "acceptedWords";
+            this.acceptedWords.ReadOnly = true;
+            this.acceptedWords.Size = new System.Drawing.Size(227, 202);
+            this.acceptedWords.TabIndex = 16;
+            this.acceptedWords.Text = "";
             // 
             // label5
             // 
@@ -326,20 +310,60 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label5.Location = new System.Drawing.Point(341, 183);
+            this.label5.Location = new System.Drawing.Point(339, 149);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(153, 20);
             this.label5.TabIndex = 15;
             this.label5.Text = "Accepted Words";
             // 
-            // acceptedWords
+            // btnPrintDiagram
             // 
-            this.acceptedWords.Location = new System.Drawing.Point(314, 222);
-            this.acceptedWords.Name = "acceptedWords";
-            this.acceptedWords.ReadOnly = true;
-            this.acceptedWords.Size = new System.Drawing.Size(227, 202);
-            this.acceptedWords.TabIndex = 16;
-            this.acceptedWords.Text = "";
+            this.btnPrintDiagram.Location = new System.Drawing.Point(621, 55);
+            this.btnPrintDiagram.Name = "btnPrintDiagram";
+            this.btnPrintDiagram.Size = new System.Drawing.Size(150, 36);
+            this.btnPrintDiagram.TabIndex = 3;
+            this.btnPrintDiagram.Text = "Print Diagram";
+            this.btnPrintDiagram.UseVisualStyleBackColor = true;
+            this.btnPrintDiagram.Click += new System.EventHandler(this.btnPrintDiagram_Click);
+            // 
+            // txtWord
+            // 
+            this.txtWord.Location = new System.Drawing.Point(343, 51);
+            this.txtWord.Name = "txtWord";
+            this.txtWord.Size = new System.Drawing.Size(165, 26);
+            this.txtWord.TabIndex = 2;
+            this.txtWord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWord_KeyPress);
+            // 
+            // cboAutomaton
+            // 
+            this.cboAutomaton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAutomaton.DropDownWidth = 140;
+            this.cboAutomaton.FormattingEnabled = true;
+            this.cboAutomaton.Location = new System.Drawing.Point(100, 51);
+            this.cboAutomaton.Name = "cboAutomaton";
+            this.cboAutomaton.Size = new System.Drawing.Size(140, 27);
+            this.cboAutomaton.TabIndex = 1;
+            this.cboAutomaton.SelectedIndexChanged += new System.EventHandler(this.cboAutomaton_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label7.Location = new System.Drawing.Point(96, 430);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(180, 20);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Regular Expression:";
+            // 
+            // txtRE
+            // 
+            this.txtRE.Location = new System.Drawing.Point(312, 424);
+            this.txtRE.Name = "txtRE";
+            this.txtRE.ReadOnly = true;
+            this.txtRE.Size = new System.Drawing.Size(411, 26);
+            this.txtRE.TabIndex = 18;
             // 
             // Main
             // 
@@ -391,6 +415,8 @@
         private System.Windows.Forms.TextBox txtWord;
         private System.Windows.Forms.RichTextBox acceptedWords;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtRE;
+        private System.Windows.Forms.Label label7;
     }
 }
 

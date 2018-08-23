@@ -147,13 +147,16 @@ namespace Automatas
                 }
                 for (byte a = 0; a < arreglo.Length; a++)
                 {
-                    for (byte i = 0; i < nuevos[a].aristas.Count; i++)
+                    for (byte i = 0; i < nuevos[arreglo[a]].aristas.Count; i++)
                     {
-                        if (nuevos[a].aristas[i].nextState.isFinal)
+                        if (nuevos[arreglo[a]].aristas[i].nextState.isFinal)
                             continue;
 
-                        eliminate(nuevos[a], nuevos[1]);
-                        Console.WriteLine("loop de aristas");
+                        if (nuevos[arreglo[a]].aristas[i].nextState == nuevos[1])
+                        {
+                            eliminate(nuevos[arreglo[a]], nuevos[1]);
+                            Console.WriteLine("loop de aristas");
+                        }
                         if (nuevos.Count < 2)
                             break;
                     }
@@ -170,6 +173,7 @@ namespace Automatas
 
         private void eliminate(State entry, State s)
         {
+            unifyAristas(s);
             String prologue = null;
             foreach (arista a in entry.aristas)
             {
@@ -197,6 +201,34 @@ namespace Automatas
                 input = prologue + a.entrada;
                 entry.addEntrada(input, a.nextState);
                 Console.WriteLine(input + "->" + a.nextState.num);
+            }
+        }
+
+        private void unifyAristas(State s)
+        {
+            String nuevaEntrada = "";
+            bool flag = true;
+            bool help = false;
+            foreach (arista a in s.aristas)
+            {
+                if (a.nextState == s)
+                {
+                    if (a.entrada.Contains("+"))
+                    {
+                        flag = false;
+                    }
+                    nuevaEntrada += (flag) ? a.entrada + "+" : "(" + a.entrada + ")" + "+";
+                    help = true;
+                }
+            }
+            if (help)
+            {
+                nuevaEntrada = nuevaEntrada.TrimEnd('+');
+                while (s.deleteEntradaWith(s))
+                {
+                    ;
+                }
+                s.addEntrada(nuevaEntrada, s);
             }
         }
     }

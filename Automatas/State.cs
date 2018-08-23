@@ -43,6 +43,22 @@ namespace Automatas
             aristas.Add(nueva);
         }
 
+        public bool deleteEntradaWith(State s)
+        {
+            arista eliminar = new arista("e", s);
+            int pos = 0;
+            foreach (arista a in aristas)
+            {
+                if (a.nextState == s)
+                    break;
+                pos++;
+            }
+            if (pos == aristas.Count)
+                return false;
+            aristas.RemoveAt(pos);
+            return true;
+        }
+
         public void printAristas()
         {
             Console.WriteLine("Las aristas de q" + num + " son:");
