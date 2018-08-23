@@ -127,19 +127,38 @@ namespace Automatas
         public String statesElimination()
         {
             String er = "";
+            int[] arreglo = new int[nuevos.Count - 2];
+            int conta = 0;
             while (nuevos.Count > 2)
             {
-                for (byte i=0; i < nuevos[0].aristas.Count; i++)
+                conta = 0;
+                foreach (State s in nuevos)
                 {
-                    if (nuevos[0].aristas[i].nextState.isFinal)
+                    if (s == nuevos[1])
                         continue;
-
-                    eliminate(nuevos[0], nuevos[1]);
-                    nuevos.Remove(nuevos[1]);
-                    Console.WriteLine("loop de aristas");
-                    if (nuevos.Count < 2)
-                        break;
+                    foreach (arista a in s.aristas)
+                    {
+                        if (a.nextState == nuevos[1])
+                        {
+                            arreglo[conta++] = nuevos.IndexOf(s);
+                            break;
+                        }
+                    }
                 }
+                for (byte a = 0; a < arreglo.Length; a++)
+                {
+                    for (byte i = 0; i < nuevos[a].aristas.Count; i++)
+                    {
+                        if (nuevos[a].aristas[i].nextState.isFinal)
+                            continue;
+
+                        eliminate(nuevos[a], nuevos[1]);
+                        Console.WriteLine("loop de aristas");
+                        if (nuevos.Count < 2)
+                            break;
+                    }
+                }
+                nuevos.Remove(nuevos[1]);
             }
             for (byte i=0; i < nuevos[0].aristas.Count; i++) {
                 er += "(" + nuevos[0].aristas[i].entrada + ")";

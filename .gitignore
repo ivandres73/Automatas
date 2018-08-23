@@ -1,6 +1,6 @@
+**Automatas/obj
+**Automatas/bin
 *.config
 *.csproj
-**/obj
-**/bin
 **/Properties
 **/.vs
