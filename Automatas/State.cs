@@ -8,10 +8,10 @@ namespace Automatas
 {
     struct arista
     {
-        public char entrada;
+        public String entrada;
         public State nextState;
 
-        public arista(char c, State s)
+        public arista(String c, State s)
         {
             entrada = c;
             nextState = s;
@@ -37,7 +37,7 @@ namespace Automatas
             isFinal = f;
         }
 
-        public void addEntrada(char ent, State sig)
+        public void addEntrada(String ent, State sig)
         {
             arista nueva = new arista(ent, sig);
             aristas.Add(nueva);

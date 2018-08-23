@@ -155,6 +155,7 @@ namespace Automatas
                 MessageBox.Show("Word is not accepted");
             Console.WriteLine("despues de transformarlo------");
             sd.tranformForElimination(current.FState);
+            Console.WriteLine(sd.statesElimination());
             //sd.printDiagram();
         }
 

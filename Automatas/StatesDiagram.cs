@@ -30,7 +30,7 @@ namespace Automatas
                 for(byte v=1; v <= a.Sigma.Length; v++)
                 {
                     int sigEstado = a.Delta[i, v];
-                    char entrada = a.Sigma[v-1];
+                    String entrada = a.Sigma[v-1].ToString();
                     nuevos[i].addEntrada(entrada, nuevos[sigEstado]);
                 }
             }
@@ -76,7 +76,7 @@ namespace Automatas
                 }
                 foreach (arista a in last.aristas)
                 {
-                    if (a.entrada == c)
+                    if (a.entrada[0] == c)
                     {
                         last = a.nextState;
                         Console.WriteLine("con " + c + " me movi a q" + last.num);
@@ -99,7 +99,7 @@ namespace Automatas
                     if (a.nextState.num == inicial.num)
                     {
                         State nuevoInicial = new State(-1, false);
-                        nuevoInicial.addEntrada('\0', inicial);
+                        nuevoInicial.addEntrada("", inicial);
                         nuevos.Insert(0, nuevoInicial);
                         salirSiEntrada = true;
                         break;
@@ -117,11 +117,68 @@ namespace Automatas
                         nuevo_final = new State(-2, true);
                         nuevos.Add(nuevo_final);
                     }
-                    nuevos[i].addEntrada('\0', nuevo_final);
+                    nuevos[i].addEntrada("", nuevo_final);
                     nuevos[i].isFinal = false;
                 }
             }
             printDiagram();
+        }
+
+        public String statesElimination()
+        {
+            String er = "";
+            while (nuevos.Count > 2)
+            {
+                for (byte i=0; i < nuevos[0].aristas.Count; i++)
+                {
+                    if (nuevos[0].aristas[i].nextState.isFinal)
+                        continue;
+
+                    eliminate(nuevos[0], nuevos[1]);
+                    nuevos.Remove(nuevos[1]);
+                    Console.WriteLine("loop de aristas");
+                    if (nuevos.Count < 2)
+                        break;
+                }
+            }
+            for (byte i=0; i < nuevos[0].aristas.Count; i++) {
+                er += "(" + nuevos[0].aristas[i].entrada + ")";
+                if (i != nuevos[0].aristas.Count-1)
+                    er += " + ";
+            }
+            return er;
+        }
+
+        private void eliminate(State entry, State s)
+        {
+            String prologue = null;
+            foreach (arista a in entry.aristas)
+            {
+                if (a.nextState == s)
+                {
+                    prologue = a.entrada;
+                    foreach (arista ar in s.aristas)
+                    {
+                        if (ar.nextState == s)
+                        {
+                            prologue += (ar.entrada.Length == 1) ? ar.entrada + "*" : "(" + ar.entrada + ")*";
+                            entry.aristas.Remove(a);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            String input = null;
+            Console.WriteLine("Para q" + entry.num + ":");
+            foreach (arista a in s.aristas)
+            {
+                if (a.nextState == s)
+                    continue;
+                input = prologue + a.entrada;
+                entry.addEntrada(input, a.nextState);
+                Console.WriteLine(input + "->" + a.nextState.num);
+            }
         }
     }
 }
