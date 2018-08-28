@@ -61,25 +61,19 @@ namespace Automatas
                 Console.WriteLine(automaton.Name + " saved correctly!");
         }
 
-        private void txtDelta_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                Console.WriteLine("enter pressed");
-            }
-        }
-
         void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
             TabPage current = (sender as TabControl).SelectedTab;
             cboAutomata.Items.Clear();
             cboAutomaton.Items.Clear();
+            cboAutomatonNFA.Items.Clear();
 
 
             foreach (Automata a in ams.lista)
             {
                 cboAutomata.Items.Add(a.Name);
                 cboAutomaton.Items.Add(a.Name);
+                cboAutomatonNFA.Items.Add(a.Name);
             }
         }
 
@@ -138,21 +132,6 @@ namespace Automatas
                 return;
             }
             sd.printDiagram();
-            if (sd.evualateWord(txtWord.Text, current.Sigma))
-            {
-                if (!string.IsNullOrWhiteSpace(acceptedWords.Text))
-                {
-                    acceptedWords.AppendText("\r\n" + txtWord.Text);
-                }
-                else
-                {
-                    acceptedWords.AppendText(txtWord.Text);
-                }
-                acceptedWords.ScrollToCaret();
-                txtWord.Text = "";
-            }
-            else
-                MessageBox.Show("Word is not accepted");
             Console.WriteLine("despues de transformarlo------");
             sd.tranformForElimination(current.FState);
             txtRE.Text = sd.statesElimination();
@@ -195,6 +174,25 @@ namespace Automatas
                     else
                         MessageBox.Show("Word is not accepted");
                 }
+            }
+        }
+
+        private void cboAutomatonNFA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Automata a in ams.lista)
+            {
+                if (a.Name == cboAutomatonNFA.Text)
+                {
+                    current = a;
+                    break;
+                }
+            }
+
+            dgvNFA.DataSource = current.getTableFromDelta();
+
+            foreach (DataGridViewColumn c in dgvNFA.Columns)
+            {
+                c.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
     }

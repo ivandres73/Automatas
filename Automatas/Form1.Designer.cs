@@ -48,18 +48,24 @@
             this.btnSaveDelta = new System.Windows.Forms.Button();
             this.cboAutomata = new System.Windows.Forms.ComboBox();
             this.tabInput = new System.Windows.Forms.TabPage();
+            this.txtRE = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.acceptedWords = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnPrintDiagram = new System.Windows.Forms.Button();
             this.txtWord = new System.Windows.Forms.TextBox();
             this.cboAutomaton = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtRE = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvNFA = new System.Windows.Forms.DataGridView();
+            this.btnSaveNFA = new System.Windows.Forms.Button();
+            this.cboAutomatonNFA = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDelta)).BeginInit();
             this.tabInput.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNFA)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreate
@@ -79,6 +85,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabInput);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(16, 15);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
@@ -295,6 +302,26 @@
             this.tabInput.TabIndex = 2;
             this.tabInput.Text = "Ingresar Palabra";
             // 
+            // txtRE
+            // 
+            this.txtRE.Location = new System.Drawing.Point(312, 424);
+            this.txtRE.Name = "txtRE";
+            this.txtRE.ReadOnly = true;
+            this.txtRE.Size = new System.Drawing.Size(411, 26);
+            this.txtRE.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label7.Location = new System.Drawing.Point(96, 430);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(180, 20);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Regular Expression:";
+            // 
             // acceptedWords
             // 
             this.acceptedWords.Location = new System.Drawing.Point(312, 188);
@@ -322,7 +349,7 @@
             this.btnPrintDiagram.Name = "btnPrintDiagram";
             this.btnPrintDiagram.Size = new System.Drawing.Size(150, 36);
             this.btnPrintDiagram.TabIndex = 3;
-            this.btnPrintDiagram.Text = "Print Diagram";
+            this.btnPrintDiagram.Text = "Print E.R.";
             this.btnPrintDiagram.UseVisualStyleBackColor = true;
             this.btnPrintDiagram.Click += new System.EventHandler(this.btnPrintDiagram_Click);
             // 
@@ -345,25 +372,49 @@
             this.cboAutomaton.TabIndex = 1;
             this.cboAutomaton.SelectedIndexChanged += new System.EventHandler(this.cboAutomaton_SelectedIndexChanged);
             // 
-            // label7
+            // tabPage3
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label7.Location = new System.Drawing.Point(96, 430);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(180, 20);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Regular Expression:";
+            this.tabPage3.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage3.Controls.Add(this.dgvNFA);
+            this.tabPage3.Controls.Add(this.btnSaveNFA);
+            this.tabPage3.Controls.Add(this.cboAutomatonNFA);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(961, 473);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "NFA";
             // 
-            // txtRE
+            // dgvNFA
             // 
-            this.txtRE.Location = new System.Drawing.Point(312, 424);
-            this.txtRE.Name = "txtRE";
-            this.txtRE.ReadOnly = true;
-            this.txtRE.Size = new System.Drawing.Size(411, 26);
-            this.txtRE.TabIndex = 18;
+            this.dgvNFA.AllowUserToAddRows = false;
+            this.dgvNFA.AllowUserToDeleteRows = false;
+            this.dgvNFA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNFA.Location = new System.Drawing.Point(263, 140);
+            this.dgvNFA.Name = "dgvNFA";
+            this.dgvNFA.RowTemplate.Height = 24;
+            this.dgvNFA.Size = new System.Drawing.Size(439, 263);
+            this.dgvNFA.TabIndex = 5;
+            // 
+            // btnSaveNFA
+            // 
+            this.btnSaveNFA.Location = new System.Drawing.Point(323, 72);
+            this.btnSaveNFA.Name = "btnSaveNFA";
+            this.btnSaveNFA.Size = new System.Drawing.Size(150, 36);
+            this.btnSaveNFA.TabIndex = 4;
+            this.btnSaveNFA.Text = "Save";
+            this.btnSaveNFA.UseVisualStyleBackColor = true;
+            // 
+            // cboAutomatonNFA
+            // 
+            this.cboAutomatonNFA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAutomatonNFA.DropDownWidth = 140;
+            this.cboAutomatonNFA.FormattingEnabled = true;
+            this.cboAutomatonNFA.Location = new System.Drawing.Point(120, 78);
+            this.cboAutomatonNFA.Name = "cboAutomatonNFA";
+            this.cboAutomatonNFA.Size = new System.Drawing.Size(140, 27);
+            this.cboAutomatonNFA.TabIndex = 3;
+            this.cboAutomatonNFA.SelectedIndexChanged += new System.EventHandler(this.cboAutomatonNFA_SelectedIndexChanged);
             // 
             // Main
             // 
@@ -384,6 +435,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDelta)).EndInit();
             this.tabInput.ResumeLayout(false);
             this.tabInput.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNFA)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -417,6 +470,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRE;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dgvNFA;
+        private System.Windows.Forms.Button btnSaveNFA;
+        private System.Windows.Forms.ComboBox cboAutomatonNFA;
     }
 }
 
