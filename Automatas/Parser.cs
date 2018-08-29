@@ -52,5 +52,30 @@ namespace Automatas
 
             return arreglo;
         }
+
+        public static String removeDuplicates(String original)
+        {
+            String nuevo = original;
+            for (int c=0; c < original.Length; c++)
+            {
+                for (int i=original.Length-1; i >= 0; i--)
+                {
+                    if (original[i] == original[c] && i != c)
+                    {
+                        nuevo = "";
+                        for (int v=0; v < original.Length; v++)
+                        {
+                            if (v == c-1 || v == c)
+                            {
+                                continue;
+                            }
+                            nuevo += original[v];
+                        }
+                        break;
+                    }
+                }
+            }
+            return nuevo;
+        }
     }
 }

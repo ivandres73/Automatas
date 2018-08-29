@@ -56,15 +56,17 @@
             this.txtWord = new System.Windows.Forms.TextBox();
             this.cboAutomaton = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dgvNFA = new System.Windows.Forms.DataGridView();
+            this.dgvNFAE = new System.Windows.Forms.DataGridView();
             this.btnSaveNFA = new System.Windows.Forms.Button();
             this.cboAutomatonNFA = new System.Windows.Forms.ComboBox();
+            this.dgvNFA = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDelta)).BeginInit();
             this.tabInput.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNFAE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNFA)).BeginInit();
             this.SuspendLayout();
             // 
@@ -376,6 +378,7 @@
             // 
             this.tabPage3.BackColor = System.Drawing.Color.DimGray;
             this.tabPage3.Controls.Add(this.dgvNFA);
+            this.tabPage3.Controls.Add(this.dgvNFAE);
             this.tabPage3.Controls.Add(this.btnSaveNFA);
             this.tabPage3.Controls.Add(this.cboAutomatonNFA);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
@@ -385,36 +388,48 @@
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "NFA";
             // 
-            // dgvNFA
+            // dgvNFAE
             // 
-            this.dgvNFA.AllowUserToAddRows = false;
-            this.dgvNFA.AllowUserToDeleteRows = false;
-            this.dgvNFA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNFA.Location = new System.Drawing.Point(263, 140);
-            this.dgvNFA.Name = "dgvNFA";
-            this.dgvNFA.RowTemplate.Height = 24;
-            this.dgvNFA.Size = new System.Drawing.Size(439, 263);
-            this.dgvNFA.TabIndex = 5;
+            this.dgvNFAE.AllowUserToAddRows = false;
+            this.dgvNFAE.AllowUserToDeleteRows = false;
+            this.dgvNFAE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNFAE.Location = new System.Drawing.Point(34, 181);
+            this.dgvNFAE.Name = "dgvNFAE";
+            this.dgvNFAE.RowTemplate.Height = 24;
+            this.dgvNFAE.Size = new System.Drawing.Size(392, 263);
+            this.dgvNFAE.TabIndex = 5;
             // 
             // btnSaveNFA
             // 
-            this.btnSaveNFA.Location = new System.Drawing.Point(323, 72);
+            this.btnSaveNFA.Location = new System.Drawing.Point(240, 54);
             this.btnSaveNFA.Name = "btnSaveNFA";
             this.btnSaveNFA.Size = new System.Drawing.Size(150, 36);
             this.btnSaveNFA.TabIndex = 4;
-            this.btnSaveNFA.Text = "Save";
+            this.btnSaveNFA.Text = "Generate equi.";
             this.btnSaveNFA.UseVisualStyleBackColor = true;
+            this.btnSaveNFA.Click += new System.EventHandler(this.btnSaveNFA_Click);
             // 
             // cboAutomatonNFA
             // 
             this.cboAutomatonNFA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAutomatonNFA.DropDownWidth = 140;
             this.cboAutomatonNFA.FormattingEnabled = true;
-            this.cboAutomatonNFA.Location = new System.Drawing.Point(120, 78);
+            this.cboAutomatonNFA.Location = new System.Drawing.Point(37, 60);
             this.cboAutomatonNFA.Name = "cboAutomatonNFA";
             this.cboAutomatonNFA.Size = new System.Drawing.Size(140, 27);
             this.cboAutomatonNFA.TabIndex = 3;
             this.cboAutomatonNFA.SelectedIndexChanged += new System.EventHandler(this.cboAutomatonNFA_SelectedIndexChanged);
+            // 
+            // dgvNFA
+            // 
+            this.dgvNFA.AllowUserToAddRows = false;
+            this.dgvNFA.AllowUserToDeleteRows = false;
+            this.dgvNFA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNFA.Location = new System.Drawing.Point(513, 45);
+            this.dgvNFA.Name = "dgvNFA";
+            this.dgvNFA.RowTemplate.Height = 24;
+            this.dgvNFA.Size = new System.Drawing.Size(392, 263);
+            this.dgvNFA.TabIndex = 6;
             // 
             // Main
             // 
@@ -436,6 +451,7 @@
             this.tabInput.ResumeLayout(false);
             this.tabInput.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNFAE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNFA)).EndInit();
             this.ResumeLayout(false);
 
@@ -471,9 +487,10 @@
         private System.Windows.Forms.TextBox txtRE;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView dgvNFA;
+        private System.Windows.Forms.DataGridView dgvNFAE;
         private System.Windows.Forms.Button btnSaveNFA;
         private System.Windows.Forms.ComboBox cboAutomatonNFA;
+        private System.Windows.Forms.DataGridView dgvNFA;
     }
 }
 

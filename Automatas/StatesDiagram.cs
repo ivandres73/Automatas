@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace Automatas
     class StatesDiagram
     {
         List<State> nuevos;
+        List<State> NFA;
 
         public StatesDiagram()
         {
@@ -39,6 +41,56 @@ namespace Automatas
             {
                 nuevos[i].isFinal = true;
             }
+        }
+
+        public DataTable createNFA(DataTable dt, char[] entries)
+        {
+            DataTable tablaNFA = new DataTable();
+
+            var c_epsilon = new DataColumn();
+            c_epsilon.DataType = typeof(String);
+            c_epsilon.ColumnName = "cE(q)";
+            tablaNFA.Columns.Add(c_epsilon);
+
+            foreach (char c in entries)
+            {
+                var col = new DataColumn();
+                col.DataType = typeof(String);
+                col.ColumnName = "d(cE(q),"+c+")";
+                tablaNFA.Columns.Add(col);
+            }
+
+            String valor;
+            int actual = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                valor = "";
+                for (byte i=0; i < dr.ItemArray.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        valor += dr.ItemArray[i];
+                        valor = valor.TrimStart('q');
+                    }
+                    if (i == dr.ItemArray.Length - 1)
+                    {
+                        if (dr.ItemArray[i].ToString() != "")
+                        {
+                            valor += "," + dr.ItemArray[i];
+                        }
+                    }
+                }
+                valor = Parser.removeDuplicates(valor);
+                Console.WriteLine("uniendo " + dr.ItemArray[0] + " y epislon: " + valor);
+                DataRow nueva_row = tablaNFA.NewRow();
+                nueva_row.ItemArray[0] = valor;
+                tablaNFA.Rows.Add(nueva_row);
+                tablaNFA.Rows[actual++][0] = valor;
+                Console.WriteLine("Dato de la row" + tablaNFA.Rows[actual - 1].ItemArray[0]);
+            }
+
+            return tablaNFA;
+            
         }
 
         public void printDiagram()

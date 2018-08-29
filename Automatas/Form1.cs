@@ -147,7 +147,8 @@ namespace Automatas
                     break;
                 }
             }
-            sd = new StatesDiagram();
+            if (sd == null)
+                sd = new StatesDiagram();
             sd.createStates(current);
         }
 
@@ -188,12 +189,25 @@ namespace Automatas
                 }
             }
 
-            dgvNFA.DataSource = current.getTableFromDelta();
+            dgvNFAE.DataSource = current.getNFATableFromDelta();
 
-            foreach (DataGridViewColumn c in dgvNFA.Columns)
+            foreach (DataGridViewColumn c in dgvNFAE.Columns)
             {
                 c.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+        }
+
+        private void btnSaveNFA_Click(object sender, EventArgs e)
+        {
+            if (sd == null)
+                sd = new StatesDiagram();
+
+            if (dgvNFAE.DataSource == null)
+            {
+                MessageBox.Show("escoja un automata");
+                return;
+            }
+            dgvNFA.DataSource = (sd.createNFA((DataTable)dgvNFAE.DataSource, current.Sigma));
         }
     }
 }

@@ -231,5 +231,44 @@ namespace Automatas
             return true;
         }
 
+        public DataTable getNFATableFromDelta()
+        {
+            DataTable dt = new DataTable();
+
+            var columnSpec = new DataColumn();
+            columnSpec.DataType = typeof(String);
+            columnSpec.ColumnName = "States";
+            columnSpec.ReadOnly = true;
+            dt.Columns.Add(columnSpec);
+
+            foreach (char c in Sigma)
+            {
+                var ColumnEntry = new DataColumn();
+                ColumnEntry.DataType = typeof(String);
+                ColumnEntry.ColumnName = c.ToString();
+                dt.Columns.Add(ColumnEntry);
+            }
+
+            var columnSpec2 = new DataColumn();
+            columnSpec2.DataType = typeof(String);
+            columnSpec2.ColumnName = "Epsilon";
+            dt.Columns.Add(columnSpec2);
+
+            DataRow dr;
+
+            for (byte i = 0; i < Q; i++)
+            {
+                dr = dt.NewRow();
+                dr["States"] = "q" + i;
+                for (byte v = 1; v < Delta.GetLength(1); v++)
+                {
+                    dr.SetField(v, Delta[i, v]);
+                }
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
+
     }
 }
