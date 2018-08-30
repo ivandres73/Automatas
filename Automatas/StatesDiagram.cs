@@ -86,7 +86,39 @@ namespace Automatas
                 nueva_row.ItemArray[0] = valor;
                 tablaNFA.Rows.Add(nueva_row);
                 tablaNFA.Rows[actual++][0] = valor;
-                Console.WriteLine("Dato de la row" + tablaNFA.Rows[actual - 1].ItemArray[0]);
+            }
+
+            valor = "";
+            foreach(DataRow dr in tablaNFA.Rows)
+            {
+                int[] estados_actuales;
+                estados_actuales = Parser.StrToIntArray(dr.ItemArray[0].ToString());
+                valor = "";
+
+                for (int a = 1; a < tablaNFA.Columns.Count; a++)
+                {
+                    valor = "";
+                    foreach (int i in estados_actuales)
+                    {
+                        valor += dt.Rows[i].ItemArray[a] + ",";
+                    }
+                    valor = valor.TrimEnd(',');
+                    dr[a] = valor;
+                }
+            }
+
+            foreach (char c in entries)
+            {
+                var col = new DataColumn();
+                col.DataType = typeof(String);
+                col.ColumnName = "cE(d(cE(q)," + c + "))";
+                tablaNFA.Columns.Add(col);
+            }
+
+            foreach (DataRow dr in tablaNFA.Rows)
+            {
+                int[] estados_actuales;
+                estados_actuales = Parser.StrToIntArray(dr.ItemArray[])
             }
 
             return tablaNFA;
@@ -145,6 +177,8 @@ namespace Automatas
             State nuevo_final = null;
             bool salirSiEntrada = false;
             foreach (State s in nuevos)
+                unifyAristas(s);
+            foreach (State s in nuevos)
             {
                 foreach (arista a in s.aristas)
                 {
@@ -173,11 +207,15 @@ namespace Automatas
                     nuevos[i].isFinal = false;
                 }
             }
+            foreach (State s in nuevos)
+                unifyAristas(s);
             printDiagram();
         }
 
         public String statesElimination()
         {
+            foreach (State s in nuevos)
+                unifyAristas(s);
             String er = "";
             int[] arreglo = new int[nuevos.Count - 2];
             int conta = 0;
