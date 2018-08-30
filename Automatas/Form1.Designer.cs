@@ -60,6 +60,7 @@
             this.btnSaveNFA = new System.Windows.Forms.Button();
             this.cboAutomatonNFA = new System.Windows.Forms.ComboBox();
             this.dgvNFA = new System.Windows.Forms.DataGridView();
+            this.dgvDFA = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -68,6 +69,7 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNFAE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNFA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDFA)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreate
@@ -377,6 +379,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage3.Controls.Add(this.dgvDFA);
             this.tabPage3.Controls.Add(this.dgvNFA);
             this.tabPage3.Controls.Add(this.dgvNFAE);
             this.tabPage3.Controls.Add(this.btnSaveNFA);
@@ -431,6 +434,17 @@
             this.dgvNFA.Size = new System.Drawing.Size(449, 152);
             this.dgvNFA.TabIndex = 6;
             // 
+            // dgvDFA
+            // 
+            this.dgvDFA.AllowUserToAddRows = false;
+            this.dgvDFA.AllowUserToDeleteRows = false;
+            this.dgvDFA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDFA.Location = new System.Drawing.Point(465, 250);
+            this.dgvDFA.Name = "dgvDFA";
+            this.dgvDFA.RowTemplate.Height = 24;
+            this.dgvDFA.Size = new System.Drawing.Size(449, 152);
+            this.dgvDFA.TabIndex = 7;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -453,6 +467,7 @@
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNFAE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNFA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDFA)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -491,6 +506,7 @@
         private System.Windows.Forms.Button btnSaveNFA;
         private System.Windows.Forms.ComboBox cboAutomatonNFA;
         private System.Windows.Forms.DataGridView dgvNFA;
+        private System.Windows.Forms.DataGridView dgvDFA;
     }
 }
 

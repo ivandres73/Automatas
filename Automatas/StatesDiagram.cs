@@ -140,6 +140,51 @@ namespace Automatas
             
         }
 
+        public DataTable createDFA(DataTable dt, char[] entries)
+        {
+            DataTable dfa = new DataTable();
+            var sta = new DataColumn();
+            sta.DataType = typeof(String);
+            sta.ColumnName = "States";
+            dfa.Columns.Add(sta);
+
+            foreach (char c in entries)
+            {
+                var col = new DataColumn();
+                col.DataType = typeof(String);
+                col.ColumnName = c.ToString();
+                dfa.Columns.Add(col);
+            }
+
+            DataRow nueva_row = dfa.NewRow();
+            nueva_row[0] = "q0";
+            dfa.Rows.Add(nueva_row);
+            for (int i = 1; i < entries.Length + 1; i++)
+            {
+                dfa.Rows[0][i] = dt.Rows[0][i];
+            }
+
+            List<int[]> visited = new List<int[]>();
+            String valor = "";
+            for (int i=0; i < dfa.Columns.Count; i++)
+            {
+                valor = (dfa.Rows[0][i].ToString());
+                valor = valor.Trim(',');
+                valor = valor.TrimStart('q');
+                visited.Add(Parser.StrToIntArray(valor));
+            }
+            foreach(int[] ivan in visited)
+            {
+                foreach(int andres in ivan)
+                {
+                    Console.Write(andres + " ");
+                }
+                Console.Write('\n');
+            }
+
+            return dfa;
+        }
+
         public void printDiagram()
         {
             if (nuevos == null)

@@ -83,6 +83,7 @@ namespace Automatas
             ams = new Automatas();
             ams.loadList();
             ams.lista.First<Automata>().print();
+            txts.Text = "0";
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -217,6 +218,8 @@ namespace Automatas
             {
                 dgvNFA.Columns[i].Width = 80;
             }
+
+            dgvDFA.DataSource = sd.createDFA((DataTable)dgvNFA.DataSource, current.Sigma);
         }
     }
 }
