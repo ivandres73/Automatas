@@ -190,6 +190,10 @@ namespace Automatas
             }
 
             dgvNFAE.DataSource = current.getNFATableFromDelta();
+            for (int i = 0; i < dgvNFAE.Columns.Count; i++)
+            {
+                dgvNFAE.Columns[i].Width = 70;
+            }
 
             foreach (DataGridViewColumn c in dgvNFAE.Columns)
             {
@@ -208,6 +212,11 @@ namespace Automatas
                 return;
             }
             dgvNFA.DataSource = (sd.createNFA((DataTable)dgvNFAE.DataSource, current.Sigma));
+
+            for (int i = 0; i < dgvNFA.Columns.Count; i++)
+            {
+                dgvNFA.Columns[i].Width = 80;
+            }
         }
     }
 }

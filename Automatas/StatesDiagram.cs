@@ -103,6 +103,7 @@ namespace Automatas
                         valor += dt.Rows[i].ItemArray[a] + ",";
                     }
                     valor = valor.TrimEnd(',');
+                    valor = Parser.removeDuplicates(valor);
                     dr[a] = valor;
                 }
             }
@@ -118,7 +119,21 @@ namespace Automatas
             foreach (DataRow dr in tablaNFA.Rows)
             {
                 int[] estados_actuales;
-                estados_actuales = Parser.StrToIntArray(dr.ItemArray[])
+                for (byte i = 1; i < entries.Length+1; i++)
+                {
+                    valor = "";
+                    estados_actuales = Parser.StrToIntArray(dr.ItemArray[i].ToString());
+                    foreach (int v in estados_actuales)
+                    {
+                        valor += tablaNFA.Rows[v].ItemArray[0] + ",";
+                    }
+                    valor = valor.TrimEnd(',');
+                    Console.WriteLine("Iteracion #" + i);
+                    Console.WriteLine("lo qe tiene valor= " + valor);
+                    valor = Parser.removeDuplicates(valor);
+                    Console.WriteLine("lo qe tiene valor sin duplicados= " + valor);
+                    dr[i + entries.Length] = valor;
+                }
             }
 
             return tablaNFA;

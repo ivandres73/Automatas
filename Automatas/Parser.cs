@@ -60,7 +60,7 @@ namespace Automatas
             {
                 for (int i=original.Length-1; i >= 0; i--)
                 {
-                    if (original[i] == original[c] && i != c)
+                    if (original[i] == original[c] && i != c && original[i] != ',')
                     {
                         nuevo = "";
                         for (int v=0; v < original.Length; v++)

@@ -396,7 +396,7 @@
             this.dgvNFAE.Location = new System.Drawing.Point(34, 181);
             this.dgvNFAE.Name = "dgvNFAE";
             this.dgvNFAE.RowTemplate.Height = 24;
-            this.dgvNFAE.Size = new System.Drawing.Size(392, 263);
+            this.dgvNFAE.Size = new System.Drawing.Size(392, 167);
             this.dgvNFAE.TabIndex = 5;
             // 
             // btnSaveNFA
@@ -425,10 +425,10 @@
             this.dgvNFA.AllowUserToAddRows = false;
             this.dgvNFA.AllowUserToDeleteRows = false;
             this.dgvNFA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNFA.Location = new System.Drawing.Point(513, 45);
+            this.dgvNFA.Location = new System.Drawing.Point(465, 45);
             this.dgvNFA.Name = "dgvNFA";
             this.dgvNFA.RowTemplate.Height = 24;
-            this.dgvNFA.Size = new System.Drawing.Size(392, 263);
+            this.dgvNFA.Size = new System.Drawing.Size(449, 152);
             this.dgvNFA.TabIndex = 6;
             // 
             // Main
